@@ -1,0 +1,30 @@
+<h2 mat-dialog-title>Ajouter une station</h2>
+
+<mat-dialog-content class="mat-typography">
+  <form>
+    <div class="form-group">
+      <label for="num_bus">num_bus</label>
+      <input class="form-control" [(ngModel)]="data.num_bus" name="nom" id="nom">
+    </div>
+    <div class="form-group">
+      <label for="marque_bus">marque_bus</label>
+      <input class="form-control" [(ngModel)]="data.marque_bus" name="region" id="region">
+    </div>
+    <div class="form-group">
+      <label for="immatriculation_bus">immatriculation_bus</label>
+      <input class="form-control" [(ngModel)]="data.immatriculation_bus" name="immatriculation_bus" id="immatriculation_bus">
+    </div>
+    <div class="form-group">
+      <label for="nb_places">nb_places</label>
+      <input class="form-control" [(ngModel)]="data.nb_places" name="nb_places" id="nb_places">
+    </div>
+    <!--    <div class="form-group">-->
+    <!--      <label for="etat">État</label>-->
+    <!--      <input class="form-control" [(ngModel)]="data.etat" name="etat" id="etat">-->
+    <!--    </div>-->
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button class="btn btn-success" (click)="submit()">Valider</button>
+</mat-dialog-actions>
