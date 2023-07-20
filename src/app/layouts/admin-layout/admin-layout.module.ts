@@ -23,6 +23,7 @@ import { DialogStation, EditDialogStation, StationComponent } from 'app/pages/st
 import {ClasseComponent, DialogClasse, EditDialogClasse} from 'app/pages/classe/classe/classe.component';
 import { BusComponent, DialogBus, EditDialogBus } from 'app/pages/bus/bus/bus.component'; 
 import { ChauffeurComponent, DialogChauffeur, EditDialogChauffeur } from 'app/pages/chauffeur/chauffeur.component'; 
+import { AgenceComponent, DialogAgence, EditDialogAgence} from 'app/agence/agence/agence.component'; 
 
 
 @NgModule({
@@ -60,6 +61,7 @@ import { ChauffeurComponent, DialogChauffeur, EditDialogChauffeur } from 'app/pa
     EditDialogClasse,
     BusComponent, DialogBus, EditDialogBus ,
     ChauffeurComponent,DialogChauffeur, EditDialogChauffeur ,
-  ],
+    AgenceComponent, DialogAgence, EditDialogAgence
+    ],
 })
 export class AdminLayoutModule {}

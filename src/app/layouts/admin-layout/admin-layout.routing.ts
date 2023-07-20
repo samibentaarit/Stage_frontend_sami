@@ -12,6 +12,7 @@ import {StationComponent} from 'app/pages/station/station/station.component';
 import {ClasseComponent} from 'app/pages/classe/classe/classe.component';
 import { BusComponent } from 'app/pages/bus/bus/bus.component';
 import { ChauffeurComponent } from 'app/pages/chauffeur/chauffeur.component';
+import { AgenceComponent } from 'app/agence/agence/agence.component';
 
 
 
@@ -29,6 +30,8 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'classes',  component: ClasseComponent },
     { path: 'bus',  component: BusComponent },
     { path: 'chauffeurs',  component: ChauffeurComponent },
+    { path: 'agences',  component: AgenceComponent },
+
 
 
 ];
