@@ -1,0 +1,39 @@
+<h2 mat-dialog-title>Ajouter une ligne</h2>
+
+<mat-dialog-content class="mat-typography">
+  <form>
+    <div class="form-group">
+      <label for="nomLigne">nomLigne</label>
+      <input class="form-control" [(ngModel)]="data.nomLigne" name="nomLigne" id="nomLigne" >
+    </div>
+    <div class="form-group">
+      <label for="numLigne">type de ligne</label>
+      <input class="form-control" [(ngModel)]="data.typeTrajet" name="numLigne" id="numLigne">
+    </div>
+    <div class="form-group">
+      <label for="agence">Ans</label>
+      <mat-select class="form-control" [(ngModel)]="data.anneeScolaire" name="ans" id="ans">
+        <mat-option *ngFor="let an of anneeScolaires" [value]="an">{{ an.ans }}</mat-option>
+      </mat-select>
+    </div>
+    
+                        <!--SELECT stations -->
+
+    <div class="form-group">
+      <label for="agence">stations</label>
+      <mat-form-field style="width: 350px" appearance="outline">
+        <mat-label>Select Station</mat-label>
+        <mat-select name="stationList" multiple [(ngModel)]="data.stations">
+            <mat-option *ngFor="let station of stationList" [value]="station">{{station.nom}}</mat-option>
+        </mat-select>
+        
+    </mat-form-field><br>
+
+    </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button class="btn btn-danger" (click)="onCancel()" style="margin-right: 6px">Annuler</button>
+  <button class="btn btn-success" (click)="ngSubmit()">Valider</button>
+</mat-dialog-actions>
