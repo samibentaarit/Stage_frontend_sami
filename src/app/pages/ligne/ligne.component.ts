@@ -43,14 +43,14 @@ export class LigneComponent implements OnInit {
       public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.getAllClassesActive();
+    this.getAllLigneEtatActif();
   }
 
   refresh() {
-    this.getAllClassesActive();
+    this.getAllLigneEtatActif();
   }
 
-  private getAllClassesActive() {
+  private getAllLigneEtatActif() {
     this.ligneService.getAllLigneEtatActif().subscribe(
         (res: any) => {
           console.log(res);

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../environments/environment';
-import {User} from '../models/eleve';
+import {Eleve, User} from '../models/eleve';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +15,12 @@ export class EleveService {
         .set('Content-Type', 'application/json');
     return this.http.get(environment.url + '/eleves', { headers });
   }
+//get all eleves
+listEleve() {
+  const headers = new HttpHeaders().set('Content-Type', 'application/json');
+  return this.http.get<Eleve[]>(environment.url + '/eleves', { headers });
+}
+
 
   getAllEleveEtatActif() {
     const headers = new HttpHeaders()

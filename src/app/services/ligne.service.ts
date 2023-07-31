@@ -31,6 +31,12 @@ export class LigneService {
   }
 
 //stations
+listLigne() {
+  const headers = new HttpHeaders().set('Content-Type', 'application/json');
+  return this.http.get<Ligne[]>(environment.url + '/lignes', { headers });
+}
+
+//stations
 listStation() {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.get<Station[]>(environment.url + '/stations', { headers });

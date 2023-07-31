@@ -52,6 +52,7 @@ import { AnneeScolaireComponent } from './pages/annee-scolaire/annee-scolaire.co
     LoginComponent,
     HomeComponent,
     TemplateComponent,
+   
 
   ],
   providers: [ {

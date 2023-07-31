@@ -22,7 +22,10 @@ export const ROUTES: RouteInfo[] = [
     { path: '/annee-scolaire', title: 'Années Scolaires',  icon: 'date_range', class: '' },
     { path: '/affectation-eleve', title: 'Affectation Elève',  icon: 'assignment_ind', class: '' },
     { path: '/affectation-personnel', title: 'Affectation Personnel',  icon: 'assignment', class: '' },
-    { path: '/lignes', title: 'Lignes',  icon: 'directions', class: '' },
+    { path: '/ligne', title: 'Lignes',  icon: 'directions', class: '' },
+    { path: '/AffectationEleveLigneBus', title: 'Affectation-Eleves-LigneBus',  icon: 'assignment', class: '' },
+    
+    
     // { path: '/table-list', title: 'Table List',  icon:'content_paste', class: '' },
     // { path: '/typography', title: 'Typography',  icon:'library_books', class: '' },
     // { path: '/icons', title: 'Icons',  icon:'bubble_chart', class: '' },

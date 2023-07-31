@@ -38,12 +38,12 @@
                                         <td>{{ ligne.nomLigne }}</td>
                                         <td>{{ ligne.typeTrajet }}</td>
                                         <td>{{ ligne.anneeScolaire?.ans }}</td>
+
                                         <td>
-                                            <ul>
-                                                <li *ngFor="let station of ligne.stations">
-                                                    {{ station.nomStation }}
-                                                </li>
-                                            </ul>
+                                            <ng-container *ngFor="let station of ligne.stations; let last = last">
+                                                {{ station.nom }}
+                                                <span *ngIf="!last"> - </span>
+                                            </ng-container>
                                         </td>
                                         <td class="text-right">
                                             <a class="btn btn-success btn-sm" (click)="openEditDialog(ligne.id, ligne.nomLigne, ligne.typeTrajet, ligne.anneeScolaire, ligne.stations)">
