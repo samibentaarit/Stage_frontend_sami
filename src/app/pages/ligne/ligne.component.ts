@@ -120,17 +120,9 @@ export class DialogLigne implements OnInit {
 
   anneeScolaires: AnneeScolaire[] = [];
   stations: Station[]=[];
-
-
-  
-
   categoryControl = new FormControl('', Validators.required);
-  
   stationList: Station[]=[];
-
   ligne: Ligne;
-
-
 
   constructor(
       public dialogRef: MatDialogRef<DialogLigne>,

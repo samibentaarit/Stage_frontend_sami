@@ -81,6 +81,9 @@ export class AffectationEleveLigneBusComponent implements OnInit {
 }
 
 
+
+
+
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'dialog-affectation-eleve-ligne-bus',
@@ -90,20 +93,12 @@ export class AffectationEleveLigneBusComponent implements OnInit {
 // tslint:disable-next-line:component-class-suffix
 export class DialogAffectationEleveLigneBus implements OnInit {
 
-  
-  
-
-
-  
-
   categoryControl = new FormControl('', Validators.required);
-  
   listStation: Station[]=[];
   busList: Bus[]=[];
   ligneList: Ligne[]=[];
   eleveList: Eleve[]=[];
   anneeScolaires: AnneeScolaire[] = [];
-  anneeScolairesList: AnneeScolaire[] = [];
   affectationEleveLigneBus: AffectationEleveLigneBus;
  
 

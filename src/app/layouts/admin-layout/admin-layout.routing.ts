@@ -19,6 +19,7 @@ import {ChauffeurComponent} from '../../pages/chauffeur/chauffeur.component';
 import {AnneeScolaireComponent} from '../../pages/annee-scolaire/annee-scolaire.component';
 import { LigneComponent } from 'app/pages/ligne/ligne.component';
 import { AffectationEleveLigneBusComponent } from 'app/pages/affectation-eleve-ligne-bus/affectation-eleve-ligne-bus.component';
+import { AffectationBusLigneComponent } from 'app/pages/affectation-bus-ligne/affectation-bus-ligne.component';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -76,7 +77,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'annee-scolaire',        component: AnneeScolaireComponent },
     { path: 'ligne',        component: LigneComponent },
     { path: 'AffectationEleveLigneBus',        component: AffectationEleveLigneBusComponent },
-
+    { path: 'AffectationBusLigne',        component: AffectationBusLigneComponent },
     // { path: 'table-list',     component: TableListComponent },
     // { path: 'typography',     component: TypographyComponent },
     // { path: 'icons',          component: IconsComponent },

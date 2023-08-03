@@ -34,6 +34,8 @@ import {
 import {LigneComponent, DialogLigne, EditDialogLigne} from '../../pages/ligne/ligne.component';
 import {ConfirmDialogComponent} from '../../pages/confirmDialog/confirmDialog.component';
 import { AffectationEleveLigneBusComponent,DialogAffectationEleveLigneBus} from '../../pages/affectation-eleve-ligne-bus/affectation-eleve-ligne-bus.component';
+import { AffectationBusLigneComponent} from '../../pages/affectation-bus-ligne/affectation-bus-ligne.component';
+import { DialogAffectationBusLigneComponent } from '../../pages/affectation-bus-ligne/affectation-bus-ligne.component'; 
 
 @NgModule({
     imports: [
@@ -70,6 +72,7 @@ import { AffectationEleveLigneBusComponent,DialogAffectationEleveLigneBus} from 
       ConfirmDialogComponent,
 LigneComponent, DialogLigne, EditDialogLigne,
 AffectationEleveLigneBusComponent,DialogAffectationEleveLigneBus,
+AffectationBusLigneComponent,DialogAffectationBusLigneComponent,
   ]
 })
 

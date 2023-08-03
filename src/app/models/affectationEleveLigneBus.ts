@@ -12,14 +12,14 @@ export class AffectationEleveLigneBus {
     listDesBus: Bus[];
     stationAller: Station[];
     stationRetour: Station[];
-    constructor(
-      anneeScolaire: AnneeScolaire,eleves: Eleve[],listDesLignes: Ligne[],listDesBus: Bus[],stationAller: Station[],stationRetour: Station[]) 
+    constructor( anneeScolaire: AnneeScolaire,eleves: Eleve[],listDesLignes: Ligne[],listDesBus: Bus[],stationAller: Station[],stationRetour: Station[]) 
       {
-      this.anneeScolaire = anneeScolaire;
       this.eleves = eleves;
       this.listDesLignes = listDesLignes;
       this.listDesBus = listDesBus;
       this.stationAller = stationAller;
       this.stationRetour = stationRetour;
+      this.anneeScolaire = anneeScolaire;
+
     }
   }

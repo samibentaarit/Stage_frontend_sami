@@ -1,0 +1,49 @@
+<h2 mat-dialog-title>Ajouter une affectation</h2>
+
+<mat-dialog-content class="mat-typography">
+  <form>
+
+    <div class="form-group">
+      <div class="form-group">
+        <label for="agence">Ans</label>
+        <mat-select class="form-control" [(ngModel)]="data.anneeScolaire" name="ans" id="ans">
+          <mat-option *ngFor="let an of anneeScolaires" [value]="an">{{ an.ans }}</mat-option>
+        </mat-select>
+      </div>
+    </div>
+    <div class="form-group">
+        <label for="listDesBus">liste des chauffeurs</label>
+        <mat-form-field style="width: 350px" appearance="outline">
+          <mat-label>Selection des chauffeur(s)</mat-label>
+          <mat-select name="listDesBus" multiple [(ngModel)]="data.listDesChauffeurs">
+              <mat-option *ngFor="let chauffeur of chauffeurList" [value]="chauffeur">{{ chauffeur.nom }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    <div class="form-group">
+      <label for="listDesLignes">Lignes</label>
+      <mat-form-field style="width: 350px" appearance="outline">
+        <mat-label>Selection Ligne(s)</mat-label>
+        <mat-select name="listDesLignes" multiple [(ngModel)]="data.listDesLignes">
+            <mat-option *ngFor="let ligne of ligneList" [value]="ligne">{{ ligne.nomLigne }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <label for="listDesBus">Bus</label>
+      <mat-form-field style="width: 350px" appearance="outline">
+        <mat-label>Selection Bus(s)</mat-label>
+        <mat-select name="listDesBus" multiple [(ngModel)]="data.listDesBus">
+            <mat-option *ngFor="let bus of busList" [value]="bus">{{ bus.immatriculation }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button class="btn btn-danger" (click)="onCancel()" style="margin-right: 6px">Annuler</button>
+  <button class="btn btn-success" (click)="ngSubmit()">Valider</button>
+</mat-dialog-actions>

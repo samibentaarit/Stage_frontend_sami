@@ -26,18 +26,19 @@
                                 <table class="table">
                                     <thead class="text-primary">
                                         <tr>
+                                            <th scope="col">ans</th>
                                             <th scope="col">Nom de Ligne</th>
                                             <th scope="col">Type de Trajet</th>
-                                            <th scope="col">Année Scolaire</th>
                                             <th scope="col">Élèves</th>
                                             <th scope="col">Bus</th>
                                             <th scope="col">Station Aller</th>
                                             <th scope="col">Station Retour</th>
-                                            <th scope="col"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        
                                         <tr *ngFor="let affectation of filteredData">
+                                            <td>{{ affectation.ans?.ans }}</td>
                                             <td>
                                                 <ng-container *ngFor="let ligne of affectation.listDesLignes; let last = last">
                                                     {{ ligne.nomLigne }}
@@ -50,7 +51,7 @@
                                                     <span *ngIf="!last">, </span>
                                                 </ng-container>
                                             </td>
-                                            <td>{{ affectation.ans?.ans }}</td>
+                                            
                                             <td>
                                                 <ng-container *ngFor="let eleve of affectation.eleves; let last = last">
                                                     {{ eleve.nom }}

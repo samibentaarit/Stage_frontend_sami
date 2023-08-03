@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Station } from "app/models/Station";
+import { Chauffeur } from "app/models/chauffeur";
 import { Ligne } from "app/models/ligne";
 import { environment } from "environments/environment";
 import { Observable } from "rxjs";
@@ -41,4 +42,9 @@ listStation() {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.get<Station[]>(environment.url + '/stations', { headers });
   }
+  //stations
+listChauffeur() {
+  const headers = new HttpHeaders().set('Content-Type', 'application/json');
+  return this.http.get<Chauffeur[]>(environment.url + '/chauffeurs', { headers });
+}
 }

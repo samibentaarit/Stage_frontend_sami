@@ -11,8 +11,8 @@ export class AffectationEleveLigneBusService {
   private API = environment.url + '/api/affectations-eleve-ligne-bus';
   constructor(private http: HttpClient) { }
   
-  createAffectationEleveLigneBus(ligne: AffectationEleveLigneBus): Observable<AffectationEleveLigneBus>{
-    return this.http.post<AffectationEleveLigneBus>(this.API, ligne);
+  createAffectationEleveLigneBus(Affectation: AffectationEleveLigneBus): Observable<AffectationEleveLigneBus>{
+    return this.http.post<AffectationEleveLigneBus>(this.API, Affectation);
   }
 
   getAffectationEleveLigneBus() {
