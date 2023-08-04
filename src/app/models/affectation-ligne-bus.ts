@@ -6,14 +6,16 @@ import { Ligne } from "./ligne";
 export class AffectationLigneBus {
     id: number;
     anneeScolaire: AnneeScolaire;
+    etat?: string;
     listDesLignes: Ligne[];
     listDesBus: Bus[];
     listDesChauffeurs: Chauffeur[];
-    constructor( anneeScolaire: AnneeScolaire,listDesLignes: Ligne[],listDesBus: Bus[],listDesChauffeurs: Chauffeur[]) 
+    constructor( anneeScolaire: AnneeScolaire,listDesLignes: Ligne[],listDesBus: Bus[],listDesChauffeurs: Chauffeur[],etat?: string) 
       {
       this.listDesLignes = listDesLignes;
       this.listDesBus = listDesBus;
       this.anneeScolaire = anneeScolaire;
       this.listDesChauffeurs = listDesChauffeurs;
+      this.etat = etat;
     }
   }

@@ -38,7 +38,7 @@
                                     <tbody>
                                         
                                         <tr *ngFor="let affectation of filteredData">
-                                            <td>{{ affectation.ans?.ans }}</td>
+                                            <td>{{ affectation.anneeScolaire?.ans }}</td>
                                             <td>
                                                 <ng-container *ngFor="let ligne of affectation.listDesLignes; let last = last">
                                                     {{ ligne.nomLigne }}

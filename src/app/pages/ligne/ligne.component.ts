@@ -158,7 +158,8 @@ export class DialogLigne implements OnInit {
       this.data.nomLigne,
       this.data.typeTrajet,
       this.data.anneeScolaire,
-      this.data.stations
+      this.data.stations,
+      this.data.etat = 'activer',
     )
     console.log(this.ligne);
     this.ligneService.createLigne(this.ligne).subscribe(data =>{

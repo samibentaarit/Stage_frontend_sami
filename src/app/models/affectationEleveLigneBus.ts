@@ -7,12 +7,13 @@ import { Ligne } from "./ligne";
 export class AffectationEleveLigneBus {
     id: number;
     anneeScolaire: AnneeScolaire;
+    etat?: string;
     eleves: Eleve[];
     listDesLignes: Ligne[];
     listDesBus: Bus[];
     stationAller: Station[];
     stationRetour: Station[];
-    constructor( anneeScolaire: AnneeScolaire,eleves: Eleve[],listDesLignes: Ligne[],listDesBus: Bus[],stationAller: Station[],stationRetour: Station[]) 
+    constructor( anneeScolaire: AnneeScolaire,eleves: Eleve[],listDesLignes: Ligne[],listDesBus: Bus[],stationAller: Station[],stationRetour: Station[],etat?: string) 
       {
       this.eleves = eleves;
       this.listDesLignes = listDesLignes;
@@ -20,6 +21,6 @@ export class AffectationEleveLigneBus {
       this.stationAller = stationAller;
       this.stationRetour = stationRetour;
       this.anneeScolaire = anneeScolaire;
-
+      this.etat = etat;
     }
   }

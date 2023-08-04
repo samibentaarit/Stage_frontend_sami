@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { AnneeScolaire } from 'app/models/anneeScolaire'; 
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,12 @@ export class AnneeScolaireService {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.get<AnneeScolaire[]>(environment.url + '/annees-scolaires', { headers });
   }
+
+
+  getAllAnneesScolairesEtatActif2(): Observable<AnneeScolaire[]>{
+    return this.http.get<AnneeScolaire[]>(environment.url + '/annees-scolaires/activer')
+  }
+
 
   getAllAnneesScolairesEtatActif() {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');

@@ -29,7 +29,7 @@ export class AffectationEleveLigneBusComponent implements OnInit {
   }
 
   refresh() {
-    
+    this.getAffectationEleveLigneBus() ;
   }
 
   private getAffectationEleveLigneBus() {
@@ -159,7 +159,8 @@ export class DialogAffectationEleveLigneBus implements OnInit {
       this.data.listDesLignes,
       this.data.listDesBus,
       this.data.stationAller,
-      this.data.stationRetour
+      this.data.stationRetour,
+      this.data.etat = 'activer',
     )
     console.log(this.affectationEleveLigneBus);
     this.affectationEleveLigneBusService.createAffectationEleveLigneBus(this.affectationEleveLigneBus).subscribe(data =>{

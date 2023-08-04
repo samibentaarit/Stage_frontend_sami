@@ -107,10 +107,11 @@ export class AffectationBusLigneComponent implements OnInit {
 // tslint:disable-next-line:component-class-suffix
 export class DialogAffectationBusLigneComponent implements OnInit {
   categoryControl = new FormControl('', Validators.required);
-  
+  listCTGS: AnneeScolaire[] = [];
+
   busList: Bus[]=[];
   ligneList: Ligne[]=[];
-  anneeScolaires: AnneeScolaire[] = [];
+  anneeScolaires: any[] = [];
   affectationBusLigne: AffectationLigneBus;
   chauffeurList: Chauffeur[]=[];
   constructor(
@@ -134,6 +135,17 @@ export class DialogAffectationBusLigneComponent implements OnInit {
         // Handle error here
       }
   );
+  this.anneeScolaireService.getAllAnneesScolairesEtatActif2().subscribe(listCTG =>{
+    this.listCTGS = listCTG;
+    console.log('listCTG -> ', this.listCTGS);
+  })
+
+
+
+
+
+
+
     //get all bus
     this.busService.getAllBuses().subscribe(busList =>{
       this.busList = busList;
@@ -152,17 +164,22 @@ export class DialogAffectationBusLigneComponent implements OnInit {
   }
 
   ngSubmit(){
+    
     this.affectationBusLigne = new AffectationLigneBus(
       this.data.anneeScolaire,
       this.data.listDesLignes,
       this.data.listDesBus,
-      this.data.listDesChauffeurs
+      this.data.listDesChauffeurs,
+      this.data.etat = 'activer',
+
+
     )
     console.log(this.affectationBusLigne);
     this.affectationLigneBusService.createAffectations(this.affectationBusLigne).subscribe(data =>{
       console.log(data);
     })
     this.dialogRef.close();
+    
   }
 
   onCancel(): void {

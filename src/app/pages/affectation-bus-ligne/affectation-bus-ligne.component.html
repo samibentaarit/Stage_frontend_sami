@@ -33,7 +33,8 @@
                                     </thead>
                                     <tbody>
                                         <tr *ngFor="let aff of filteredData">
-                                        <td >{{ aff.annee?.ans }}</td>
+                                            <td>{{ aff.anneeScolaire?.ans }}</td>
+
                                         <td>
                                             <ng-container *ngFor="let list of aff.listDesLignes; let last = last">
                                                 {{ list?.nomLigne }}
