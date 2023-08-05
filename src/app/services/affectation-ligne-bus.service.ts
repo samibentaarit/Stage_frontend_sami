@@ -11,12 +11,15 @@ export class AffectationLigneBusService {
   private API = environment.url + '/api/affectations';
 
   constructor(private http: HttpClient) { }
-  getAllAffectations() {
+  getAllAffectationsActiver() {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.http.get(environment.url + '/api/affectations', { headers });
+    return this.http.get(environment.url + '/api/affectations/activer', { headers });
   }
   createAffectations(ligne: AffectationLigneBus): Observable<AffectationLigneBus>{
     return this.http.post<AffectationLigneBus>(this.API, ligne);
   }
-
+  archiverAffectationBusLigne(id) {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.put(environment.url + '/api/affectations-eleve-ligne-bus/' + id + '/archiver', { headers })
+  }
 }

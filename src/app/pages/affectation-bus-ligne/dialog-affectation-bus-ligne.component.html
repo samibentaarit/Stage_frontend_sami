@@ -3,16 +3,9 @@
 <mat-dialog-content class="mat-typography">
   <form>
 
-    <div class="form-group">
-      <div class="form-group">
-        <label for="agence">Ans</label>
-        <mat-select class="form-control" [(ngModel)]="data.anneeScolaire" name="ans" id="ans">
-          <mat-option *ngFor="let an of anneeScolaires" [value]="an">{{ an.ans }}</mat-option>
-        </mat-select>
-      </div>
-    </div>
- <!--SELECT CATEGORY -->
- <mat-form-field style="width: 350px" appearance="outline">
+
+ <!--SELECT anneeScolaire -->
+ <mat-form-field style="width: 100%" appearance="outline">
   <mat-label>Category: </mat-label>
   <mat-select [formControl]="categoryControl" [(ngModel)]="data.anneeScolaire" required>
 <!--                            <mat-option>&#45;&#45;</mat-option>-->
@@ -21,12 +14,7 @@
       </mat-option>
   </mat-select>
  
-</mat-form-field><br>
-
-
-
-
-
+</mat-form-field>
 
     <div class="form-group">
         <label for="listDesBus">liste des chauffeurs</label>
@@ -36,8 +24,8 @@
               <mat-option *ngFor="let chauffeur of chauffeurList" [value]="chauffeur">{{ chauffeur.nom }}</mat-option>
           </mat-select>
         </mat-form-field>
-      </div>
-    <div class="form-group">
+      
+    
       <label for="listDesLignes">Lignes</label>
       <mat-form-field style="width: 350px" appearance="outline">
         <mat-label>Selection Ligne(s)</mat-label>
@@ -45,8 +33,8 @@
             <mat-option *ngFor="let ligne of ligneList" [value]="ligne">{{ ligne.nomLigne }}</mat-option>
         </mat-select>
       </mat-form-field>
-    </div>
-    <div class="form-group">
+    
+  
       <label for="listDesBus">Bus</label>
       <mat-form-field style="width: 350px" appearance="outline">
         <mat-label>Selection Bus(s)</mat-label>
@@ -54,9 +42,9 @@
             <mat-option *ngFor="let bus of busList" [value]="bus">{{ bus.immatriculation }}</mat-option>
         </mat-select>
       </mat-form-field>
-    </div>
+    
 
-
+  </div>
   </form>
 </mat-dialog-content>
 

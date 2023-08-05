@@ -8,6 +8,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
+  
   {
     path: '',
     redirectTo: 'dashboard',

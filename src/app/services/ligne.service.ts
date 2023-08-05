@@ -30,15 +30,11 @@ export class LigneService {
   createLigne(ligne: Ligne): Observable<Ligne>{
     return this.http.post<Ligne>(this.API, ligne);
   }
-  archiverClasse(id) {
-    const headers = new HttpHeaders()
-        .set('Content-Type', 'application/json');
-    return this.http.put(environment.url + '/lignes/' + id + '/archiver', { headers })
-  }
+
  
 
 
-//stations
+//lignes
 listLigne() {
   const headers = new HttpHeaders().set('Content-Type', 'application/json');
   return this.http.get<Ligne[]>(environment.url + '/lignes', { headers });
@@ -49,7 +45,8 @@ listStation() {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.get<Station[]>(environment.url + '/stations', { headers });
   }
-  //stations
+
+//chauffeurs
 listChauffeur() {
   const headers = new HttpHeaders().set('Content-Type', 'application/json');
   return this.http.get<Chauffeur[]>(environment.url + '/chauffeurs', { headers });

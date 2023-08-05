@@ -79,7 +79,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'AffectationEleveLigneBus',        component: AffectationEleveLigneBusComponent },
     { path: 'AffectationBusLigne',        component: AffectationBusLigneComponent },
     // { path: 'table-list',     component: TableListComponent },
-    // { path: 'typography',     component: TypographyComponent },
+ { path: 'typography',     component: TypographyComponent },
     // { path: 'icons',          component: IconsComponent },
     // { path: 'maps',           component: MapsComponent },
     // { path: 'notifications',  component: NotificationsComponent },

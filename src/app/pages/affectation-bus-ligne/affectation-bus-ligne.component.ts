@@ -63,7 +63,7 @@ export class AffectationBusLigneComponent implements OnInit {
   }
 
   private getAllAffectations() {
-    this.affservice.getAllAffectations().subscribe(
+    this.affservice.getAllAffectationsActiver().subscribe(
         (res: any) => {
           console.log(res);
           this.dataSource = res;
@@ -74,7 +74,12 @@ export class AffectationBusLigneComponent implements OnInit {
         }
     );
   }
-
+  archiverAffectationBusLigne(id) {
+    this.affservice.archiverAffectationBusLigne(id).subscribe((res: any) => {
+      // this.showNotification('top', 'right', 'La classe a été supprimer', 'danger');
+      this.refresh();
+    });
+  }
 
 
 
