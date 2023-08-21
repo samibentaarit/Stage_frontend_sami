@@ -1,0 +1,34 @@
+<h2 mat-dialog-title>Modifier la ligne</h2>
+
+<mat-dialog-content class="mat-typography">
+    <form>
+        <div class="form-group">
+            <label for="nomLigne">Nom de la ligne</label>
+            <input class="form-control" [(ngModel)]="data.nomLigne" name="nomLigne" id="nomLigne">
+        </div>
+        <div class="form-group">
+            <label for="typeTrajet">Type de trajet</label>
+            <input class="form-control" [(ngModel)]="data.typeTrajet" name="typeTrajet" id="typeTrajet">
+        </div>
+        <div class="form-group">
+            <label for="ans">Année scolaire</label>
+            <mat-select class="form-control" [(ngModel)]="data.anneeScolaire" name="ans" id="ans">
+                <mat-option [value]="null">{{ data.anneeScolaire.ans }}</mat-option>
+                <mat-option *ngFor="let an of anneeScolaires" [value]="an">{{ an.ans }}</mat-option>
+            </mat-select>
+        </div>
+        <!-- Assuming that 'stations' is an array of Station objects -->
+        <!-- You might need to adapt this part based on your Station class structure -->
+        <div class="form-group">
+            <label for="stations">Stations</label>
+            <mat-select class="form-control" [(ngModel)]="selectedStations" name="stations" id="stations" multiple>
+                <mat-option *ngFor="let station of data.stations" [value]="station">{{ station.name }}</mat-option>
+            </mat-select>
+        </div>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button class="btn btn-danger" (click)="onCancel()" style="margin-right: 6px">Annuler</button>
+    <button class="btn btn-success" (click)="submitEdit()">Enregistrer</button>
+</mat-dialog-actions>

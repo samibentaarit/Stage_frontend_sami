@@ -20,9 +20,10 @@ export const ROUTES: RouteInfo[] = [
     { path: '/personnels', title: 'Personnels',  icon: 'person', class: '' },
     { path: '/classes', title: 'Classes',  icon: 'class', class: '' },
     { path: '/annee-scolaire', title: 'Années Scolaires',  icon: 'date_range', class: '' },
+    { path: '/ligne', title: 'Lignes',  icon: 'directions', class: '' },
+
     { path: '/AffectationEleveLigneBus', title: 'Affectation Elève',  icon: 'assignment_ind', class: '' },
     { path: '/AffectationBusLigne', title: 'Affectation Personnel',  icon: 'assignment', class: '' },
-    { path: '/ligne', title: 'Lignes',  icon: 'directions', class: '' },
     
     
     // { path: '/table-list', title: 'Table List',  icon:'content_paste', class: '' },

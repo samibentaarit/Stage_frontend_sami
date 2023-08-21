@@ -39,9 +39,9 @@ export class BusService {
 
   getAllBusEtatActif() {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.http.get(environment.url + '/buses/activer', { headers });
+    return this.http.get<Bus[]>(environment.url + '/buses/activer', { headers });
   }
-  
+
 
   archiverBus(id: number) {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');

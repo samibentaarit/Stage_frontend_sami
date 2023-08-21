@@ -20,22 +20,25 @@ export class LigneComponent implements OnInit {
   private dataSource: any;
   searchText = '';
 
-
   onSearchChange() {
     // Reset the filteredData array
     this.filteredData = [];
-
+  
     // Check if the search text is empty
     if (!this.searchText) {
       this.filteredData = this.dataSource;
       return;
     }
-
+  
     // Perform the search based on the searchText
     this.filteredData = this.dataSource.filter(item => {
       // Customize the search criteria as per your requirements
-      const fullSearch = `${item.cycle} ${item.niveau} ${item.numClasse}`.toLowerCase();
-      return fullSearch.includes(this.searchText.toLowerCase());
+      const ligneText = `${item.nomLigne} ${item.typeTrajet} ${item.anneeScolaire?.ans}`.toLowerCase();
+  
+      // Loop through the stations and concatenate their names for the search
+      const stationText = item.stations.map(station => station.nom).join(' ').toLowerCase();
+  
+      return ligneText.includes(this.searchText.toLowerCase()) || stationText.includes(this.searchText.toLowerCase());
     });
   }
 
@@ -70,18 +73,13 @@ export class LigneComponent implements OnInit {
     });
   }
 
-    openEditDialog(id: number, cycle: string, niveau: string, numClasse: string, etat: string, anneeScolaire: AnneeScolaire): void {
-    // @ts-ignore
-      const dialogRef = this.dialog.open(EditDialogClasse, {
-      width: '500px',
-      data: {
-        id: id,
-        cycle: cycle,
-        niveau: niveau,
-        numClasse: numClasse,
-        etat: etat,
-        anneeScolaire: anneeScolaire
-      }
+
+
+    // Method to open the edit dialog for a Ligne
+  openEditDialog(ligne: Ligne): void {
+    const dialogRef = this.dialog.open(EditDialogLigne, {
+      width: '600px', // Adjust the width as needed
+      data: { ...ligne }, // Pass a copy of the Ligne object
     });
     dialogRef.afterClosed().subscribe(result => {
       this.refresh();
@@ -135,7 +133,7 @@ export class DialogLigne implements OnInit {
 
 
       ngOnInit(): void {
-        this.anneeScolaireService.getAllAnneesScolairesEtatActif().subscribe(
+        this.anneeScolaireService.getAllAnneesScolairesEtatActif2().subscribe(
             (an) => {
               // @ts-ignore
               this.anneeScolaires = an;
@@ -182,48 +180,56 @@ export class DialogLigne implements OnInit {
 })
 
 // tslint:disable-next-line:component-class-suffix
+@Component({
+  selector: 'edit-dialog-ligne',
+  templateUrl: 'edit-dialog-ligne.html',
+})
 export class EditDialogLigne implements OnInit {
-
   anneeScolaires: AnneeScolaire[] = [];
+  selectedStations: Station[] = [];
 
   constructor(
-      public dialogRef: MatDialogRef<EditDialogLigne>,
-      @Inject(MAT_DIALOG_DATA) public data: Ligne,
-      private ligneService: LigneService,
-      private anneeScolaireService: AnneeScolaireService) { }
+    public dialogRef: MatDialogRef<EditDialogLigne>,
+    @Inject(MAT_DIALOG_DATA) public data: Ligne,
+    private ligneService: LigneService,
+    private anneeScolaireService: AnneeScolaireService
+  ) {}
 
   ngOnInit(): void {
-    this.anneeScolaireService.getAllAnneesScolairesEtatActif().subscribe(
-        (an) => {
-          // @ts-ignore
-          this.anneeScolaires = an.filter(annee => annee.id !== this.data.anneeScolaire.id);
-        },
-        (error) => {
-          console.error(error);
-          // Handle error here
-        }
+    // Load anneeScolaires
+    this.anneeScolaireService.getAllAnneesScolairesEtatActif2().subscribe(
+      (annees) => {
+        this.anneeScolaires = annees;
+        this.data.anneeScolaire = this.anneeScolaires.find(an => an.id === this.data.anneeScolaire.id);
+      },
+      (error) => {
+        console.error(error);
+      }
     );
+  
+    // Initialize selectedStations
+    this.selectedStations = [...this.data.stations];
   }
+
   submitEdit() {
     const id = this.data.id;
-    const ligne: Ligne = {
-      id: this.data.id,
-      typeTrajet: this.data.typeTrajet,
-      nomLigne: this.data.nomLigne,
-      stations: this.data.stations,
-      anneeScolaire: this.data.anneeScolaire
+    const updatedLigne: Ligne = {
+      ...this.data,
+      stations: this.selectedStations,
     };
-   // this.ligneService.updateLigne(id, ligne).subscribe((res: any) => {
-      // Handle success or show notification
-   //   this.dialogRef.close();
-   // });
+
+    this.ligneService.updateLigne(id, updatedLigne).subscribe(
+      (res: any) => {
+        // Handle success or show notification
+        this.dialogRef.close();
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
   }
 
   onCancel(): void {
-    // Close the dialog without any action
     this.dialogRef.close();
   }
-
 }
-
-

@@ -22,18 +22,18 @@ export class AffectationEleveLigneBusComponent implements OnInit {
   filteredData: any[] = [];
   private dataSource: any;
   searchText = '';
-  constructor(public dialog: MatDialog,private AffectationEleveLigneBus:AffectationEleveLigneBusService) { }
+  constructor(public dialog: MatDialog,private AffectationEleveLigneBusService:AffectationEleveLigneBusService) { }
 
   ngOnInit(): void {
-    this.getAffectationEleveLigneBus() 
+    this.getAffectationEleveLigneBusActiver() 
   }
 
   refresh() {
-    this.getAffectationEleveLigneBus() ;
+    this.getAffectationEleveLigneBusActiver() ;
   }
 
-  private getAffectationEleveLigneBus() {
-    this.AffectationEleveLigneBus.getAffectationEleveLigneBus().subscribe(
+  private getAffectationEleveLigneBusActiver() {
+    this.AffectationEleveLigneBusService.getAffectationEleveLigneBusActiver().subscribe(
         (res: any) => {
           console.log(res);
           this.dataSource = res;
@@ -78,6 +78,12 @@ export class AffectationEleveLigneBusComponent implements OnInit {
       return fullSearch.includes(this.searchText.toLowerCase());
     });
   }
+  archiverAffectationEleveLigneBus(id) {
+    this.AffectationEleveLigneBusService.archiverAffectationEleveLigneBus(id).subscribe((res: any) => {
+      // this.showNotification('top', 'right', 'La classe a été supprimer', 'danger');
+      this.refresh();
+    });
+  }
 }
 
 
@@ -93,7 +99,7 @@ export class AffectationEleveLigneBusComponent implements OnInit {
 // tslint:disable-next-line:component-class-suffix
 export class DialogAffectationEleveLigneBus implements OnInit {
 
-  categoryControl = new FormControl('', Validators.required);
+  anneeScolairesV = new FormControl('', Validators.required);
   listStation: Station[]=[];
   busList: Bus[]=[];
   ligneList: Ligne[]=[];

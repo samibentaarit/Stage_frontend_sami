@@ -22,8 +22,9 @@ export class LigneService {
   }
 
   updateLigne(id: number, ligne: Ligne) {
-    throw new Error('Method not implemented.');
-  }
+      const headers = new HttpHeaders().set('Content-Type', 'application/json');
+      return this.http.put<Ligne>(environment.url + '/ligne/' + id, ligne, { headers });
+    }
   private API = environment.url + '/lignes';
   constructor(private http: HttpClient) { }
 
@@ -37,19 +38,19 @@ export class LigneService {
 //lignes
 listLigne() {
   const headers = new HttpHeaders().set('Content-Type', 'application/json');
-  return this.http.get<Ligne[]>(environment.url + '/lignes', { headers });
+  return this.http.get<Ligne[]>(environment.url + '/lignes/activer', { headers });
 }
 
 //stations
 listStation() {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.http.get<Station[]>(environment.url + '/stations', { headers });
+    return this.http.get<Station[]>(environment.url + '/stations/activer', { headers });
   }
 
 //chauffeurs
 listChauffeur() {
   const headers = new HttpHeaders().set('Content-Type', 'application/json');
-  return this.http.get<Chauffeur[]>(environment.url + '/chauffeurs', { headers });
+  return this.http.get<Chauffeur[]>(environment.url + '/chauffeurs/activer', { headers });
 }
 
 }

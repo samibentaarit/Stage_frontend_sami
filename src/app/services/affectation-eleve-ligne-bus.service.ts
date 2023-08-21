@@ -15,8 +15,12 @@ export class AffectationEleveLigneBusService {
     return this.http.post<AffectationEleveLigneBus>(this.API, Affectation);
   }
 
-  getAffectationEleveLigneBus() {
+  getAffectationEleveLigneBusActiver() {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.http.get(environment.url + '/api/affectations-eleve-ligne-bus', { headers });
+    return this.http.get(environment.url + '/api/affectations-eleve-ligne-bus/activer', { headers });
+  }
+  archiverAffectationEleveLigneBus(id) {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.put(environment.url + '/api/affectations-eleve-ligne-bus/' + id + '/archiver', { headers })
   }
 }

@@ -4,56 +4,64 @@
   <form>
 
     <div class="form-group">
-      <div class="form-group">
-        <label for="agence">Ans</label>
-        <mat-select class="form-control" [(ngModel)]="data.anneeScolaire" name="ans" id="ans">
-          <mat-option *ngFor="let an of anneeScolaires" [value]="an">{{ an.ans }}</mat-option>
-        </mat-select>
-      </div>
-      <label for="eleves">Élèves</label>
-      <mat-form-field style="width: 350px" appearance="outline">
+        <!--SELECT anneeScolaire -->
+        <mat-form-field style="width: 100%" appearance="outline">
+          <mat-label>Annee Scolaire: </mat-label>
+          <mat-select [formControl]="anneeScolairesV" [(ngModel)]="data.anneeScolaire" >
+        <!--                            <mat-option>&#45;&#45;</mat-option>-->
+              <mat-option *ngFor="let an of anneeScolaires" [value]="an">
+                  {{an.ans}}
+              </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      
+      <mat-form-field style="width: 100%" appearance="outline">
         <mat-label>Select Élève(s)</mat-label>
         <mat-select name="eleves" multiple [(ngModel)]="data.eleves">
             <mat-option *ngFor="let eleve of eleveList" [value]="eleve">{{ eleve.nom }}</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
-    <div class="form-group">
-      <label for="listDesLignes">Lignes</label>
-      <mat-form-field style="width: 350px" appearance="outline">
+    
+  
+      <mat-form-field style="width: 100%" appearance="outline">
         <mat-label>Select Ligne(s)</mat-label>
         <mat-select name="listDesLignes" multiple [(ngModel)]="data.listDesLignes">
             <mat-option *ngFor="let ligne of ligneList" [value]="ligne">{{ ligne.nomLigne }}</mat-option>
         </mat-select>
       </mat-form-field>
-    </div>
-    <div class="form-group">
-      <label for="listDesBus">Bus</label>
-      <mat-form-field style="width: 350px" appearance="outline">
-        <mat-label>Select Bus(s)</mat-label>
-        <mat-select name="listDesBus" multiple [(ngModel)]="data.listDesBus">
-            <mat-option *ngFor="let bus of busList" [value]="bus">{{ bus.immatriculation }}</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-    <div class="form-group">
-      <label for="stationAller">Stations Aller</label>
-      <mat-form-field style="width: 350px" appearance="outline">
+    
+      
+   
+<!--SELECT anneeScolaire -->
+<mat-form-field style="width: 100%" appearance="outline">
+  <mat-label>Select bus(s) </mat-label>
+  <mat-select  [(ngModel)]="data.listDesBus">
+<!--                            <mat-option>&#45;&#45;</mat-option>-->
+<mat-option *ngFor="let bus of busList" [value]="bus">{{ bus.immatriculation }}</mat-option>
+</mat-select>
+</mat-form-field>
+
+
+
+   
+      
+      <mat-form-field style="width: 100%" appearance="outline">
         <mat-label>Select Station(s) Aller</mat-label>
         <mat-select name="stationAller" multiple [(ngModel)]="data.stationAller">
             <mat-option *ngFor="let station of listStation" [value]="station">{{ station.nom }}</mat-option>
         </mat-select>
       </mat-form-field>
-    </div>
-    <div class="form-group">
-      <label for="stationRetour">Stations Retour</label>
-      <mat-form-field style="width: 350px" appearance="outline">
+    
+      
+      <mat-form-field style="width: 100%" appearance="outline">
         <mat-label>Select Station(s) Retour</mat-label>
         <mat-select name="stationRetour" multiple [(ngModel)]="data.stationRetour">
             <mat-option *ngFor="let station of listStation" [value]="station">{{ station.nom }}</mat-option>
         </mat-select>
       </mat-form-field>
-    </div>
+    
   </form>
 </mat-dialog-content>
 

@@ -146,13 +146,8 @@ export class DialogAffectationBusLigneComponent implements OnInit {
   })
 
 
-
-
-
-
-
     //get all bus
-    this.busService.getAllBuses().subscribe(busList =>{
+    this.busService.getAllBusEtatActif().subscribe(busList =>{
       this.busList = busList;
       console.log(busList);
     })
@@ -169,22 +164,18 @@ export class DialogAffectationBusLigneComponent implements OnInit {
   }
 
   ngSubmit(){
-    
     this.affectationBusLigne = new AffectationLigneBus(
       this.data.anneeScolaire,
       this.data.listDesLignes,
       this.data.listDesBus,
       this.data.listDesChauffeurs,
       this.data.etat = 'activer',
-
-
     )
     console.log(this.affectationBusLigne);
     this.affectationLigneBusService.createAffectations(this.affectationBusLigne).subscribe(data =>{
       console.log(data);
     })
     this.dialogRef.close();
-    
   }
 
   onCancel(): void {

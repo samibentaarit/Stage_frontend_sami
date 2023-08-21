@@ -66,7 +66,7 @@ export const AdminLayoutRoutes: Routes = [
     // }
 
     { path: 'dashboard',      component: DashboardComponent },
-    // { path: 'user-profile',   component: UserProfileComponent },
+    { path: 'user-profile',   component: UserProfileComponent },
     { path: 'eleves',        component: EleveComponent },
     { path: 'personnels',  component: PersonnelComponent },
     { path: 'classes',        component: ClasseComponent },

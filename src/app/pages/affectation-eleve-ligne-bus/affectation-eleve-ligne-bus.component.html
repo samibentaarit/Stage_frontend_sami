@@ -60,7 +60,7 @@
                                             </td>
                                             <td>
                                                 <ng-container *ngFor="let bus of affectation.listDesBus; let last = last">
-                                                    {{ bus.nom }}
+                                                    {{ bus.immatriculation }}
                                                     <span *ngIf="!last">, </span>
                                                 </ng-container>
                                             </td>
@@ -80,7 +80,7 @@
                                                 <a class="btn btn-success btn-sm" (click)="openEditDialog(affectation.id, affectation.listDesLignes, affectation.listDesBus, affectation.stationAller, affectation.stationRetour)">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
-                                                <a class="btn btn-danger btn-sm" (click)="deleteAffectation(affectation.id)">
+                                                <a class="btn btn-danger btn-sm" (click)="archiverAffectationEleveLigneBus(affectation.id)">
                                                     <i class="fas fa-trash-alt"></i>
                                                 </a>
                                             </td>
