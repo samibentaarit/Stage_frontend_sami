@@ -3,6 +3,8 @@ import { ROUTES } from '../sidebar/sidebar.component';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
 import { Router } from '@angular/router';
 import { AuthService } from 'app/auth.service';
+import { HttpClient } from '@angular/common/http';
+import { Reclamation } from 'app/models/reclamation';
 
 @Component({
     selector: 'app-navbar',
@@ -15,8 +17,9 @@ export class NavbarComponent implements OnInit {
     mobile_menu_visible: any = 0;
     private toggleButton: any;
     private sidebarVisible: boolean;
-
-    constructor(location: Location,  private element: ElementRef, private router: Router, private authService: AuthService) {
+    reclamations: Reclamation[] = [];
+    hasReclamations: boolean = true;
+    constructor(private http: HttpClient, location: Location,  private element: ElementRef, private router: Router, private authService: AuthService) {
         this.location = location;
         this.sidebarVisible = false;
     }
@@ -33,6 +36,7 @@ export class NavbarComponent implements OnInit {
                 this.mobile_menu_visible = 0;
             }
         });
+        this.fetchReclamations();
     }
 
     logout() {
@@ -133,4 +137,23 @@ export class NavbarComponent implements OnInit {
         return 'Dashboard';
     }
 
+    fetchReclamations() {
+        this.http.get<Reclamation[]>('http://localhost:58935/api/reclamations').subscribe(
+          (reclamations) => {
+            this.reclamations = reclamations;
+            this.hasReclamations = this.reclamations.length > 0;
+          },
+          (error) => {
+            console.error('Error fetching notifications:', error);
+          }
+        );
+      }
+
+      
+      
+      markReclamationsAsRead() {
+        const backendUrl = 'http://localhost:58935'; // Replace with your actual backend URL
+    
+        return this.http.post(`${backendUrl}/vuReclamations`, {}).toPromise();
+      }
 }
