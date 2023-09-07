@@ -1,0 +1,52 @@
+<h2 mat-dialog-title>Modifier l'affectation de ligne de bus</h2>
+
+<mat-dialog-content class="mat-typography">
+    <form>
+        <div class="form-group">
+            <label for="anneeScolaire">Année Scolaire</label>
+            <input class="form-control" [(ngModel)]="data.anneeScolaire.ans" name="anneeScolaire" id="anneeScolaire">
+        </div>
+        <div class="form-group">
+            <label for="etat">État</label>
+            <input class="form-control" [(ngModel)]="data.etat" name="etat" id="etat">
+        </div>
+        <div class="form-group">
+            <label for="listDesLignes">Liste des Lignes</label>
+            <div class="input-group mb-2">
+                <!-- Input for listDesLignes -->
+                <input class="form-control" [(ngModel)]="newLigne" name="newLigne" id="newLigne">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-primary btn-sm" type="button" (click)="addLigne()">
+                        <i class="fas fa-plus" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="listDesLignes">Liste des Lignes</label>
+                <!-- Display the listDesLignes using ngFor -->
+                <div *ngFor="let ligne of data.listDesLignes; let i = index" class="row align-items-center mb-2 border-bottom">
+                    <div class="col">{{ ligne.nomLigne }}</div>
+                    <div class="col-auto">
+                        <button class="btn btn-outline-danger btn-sm" type="button" (click)="removeLigne(i)">
+                            <i class="fas fa-trash-alt" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="listDesBus">Liste des Bus</label>
+            <!-- Similar structure for listDesBus -->
+        </div>
+        <div class="form-group">
+            <label for="listDesChauffeurs">Liste des Chauffeurs</label>
+            <!-- Similar structure for listDesChauffeurs -->
+        </div>
+
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button class="btn btn-danger" (click)="onCancel()" style="margin-right: 6px">Annuler</button>
+    <button class="btn btn-success" (click)="submitEdit()">Enregistrer</button>
+</mat-dialog-actions>

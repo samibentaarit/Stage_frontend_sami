@@ -22,4 +22,9 @@ export class AffectationLigneBusService {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.put(environment.url + '/api/affectations-eleve-ligne-bus/' + id + '/archiver', { headers })
   }
+  updateAffectationLigneBus(id: number, affectationLigneBus: AffectationLigneBus): Observable<AffectationLigneBus> {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.put<AffectationLigneBus>(`${environment.url}/affectation-ligne-bus/${id}`, affectationLigneBus, { headers });
+  }
+
 }

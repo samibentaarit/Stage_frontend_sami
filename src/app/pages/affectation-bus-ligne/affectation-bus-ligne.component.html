@@ -49,7 +49,8 @@
                                             </ng-container>
                                         </td>
                                         <td class="text-right">
-                                            <a class="btn btn-success btn-sm" (click)="openEditDialog(classe.id, classe.cycle, classe.niveau, classe.numClasse, classe.etat, classe.anneeScolaire)">
+                                            <!-- Update the button to call openEditDialog with an AffectationLigneBus object -->
+                                            <a class="btn btn-success btn-sm" (click)="openEditDialog(aff.id, aff.anneeScolaire, aff.etat, aff.listDesLignes, aff.listDesBus, aff.listDesChauffeurs)">
                                                 <i class="fas fa-edit"></i>
                                             </a>
                                             <a class="btn btn-danger btn-sm" (click)="archiverAffectationBusLigne(aff.id)"><i class="fas fa-trash-alt"></i>

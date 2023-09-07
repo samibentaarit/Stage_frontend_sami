@@ -6,7 +6,7 @@
 
  <!--SELECT anneeScolaire -->
  <mat-form-field style="width: 100%" appearance="outline">
-  <mat-label>Category: </mat-label>
+  <mat-label>annee scholaire: </mat-label>
   <mat-select [formControl]="categoryControl" [(ngModel)]="data.anneeScolaire" required>
 <!--                            <mat-option>&#45;&#45;</mat-option>-->
       <mat-option *ngFor="let ctg of listCTGS" [value]="ctg">

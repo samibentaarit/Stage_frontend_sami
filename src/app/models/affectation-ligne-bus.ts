@@ -5,12 +5,12 @@ import { Ligne } from "./ligne";
 
 export class AffectationLigneBus {
     id: number;
-    anneeScolaire: AnneeScolaire;
+    anneeScolaire?: AnneeScolaire;
     etat?: string;
     listDesLignes: Ligne[];
     listDesBus: Bus[];
     listDesChauffeurs: Chauffeur[];
-    constructor( anneeScolaire: AnneeScolaire,listDesLignes: Ligne[],listDesBus: Bus[],listDesChauffeurs: Chauffeur[],etat?: string) 
+    constructor( listDesLignes: Ligne[],listDesBus: Bus[],listDesChauffeurs: Chauffeur[],anneeScolaire?: AnneeScolaire,etat?: string) 
       {
       this.listDesLignes = listDesLignes;
       this.listDesBus = listDesBus;

@@ -98,7 +98,30 @@ export class AffectationBusLigneComponent implements OnInit {
     });
 
 }
+openEditDialog(
+  id: number,
+  anneeScolaire: AnneeScolaire,
+  etat: string,
+  listDesLignes: Ligne[],
+  listDesBus: Bus[],
+  listDesChauffeurs: Chauffeur[]
+): void {
+  const dialogRef = this.dialog.open(EditDialogAffectationLigneBus, {
+    width: '500px',
+    data: {
+      id: id,
+      anneeScolaire: anneeScolaire,
+      etat: etat,
+      listDesLignes: listDesLignes,
+      listDesBus: listDesBus,
+      listDesChauffeurs: listDesChauffeurs
+    }
+  });
 
+  dialogRef.afterClosed().subscribe(result => {
+    this.refresh();
+  });
+}
 }
 
 
@@ -165,11 +188,13 @@ export class DialogAffectationBusLigneComponent implements OnInit {
 
   ngSubmit(){
     this.affectationBusLigne = new AffectationLigneBus(
-      this.data.anneeScolaire,
+      
       this.data.listDesLignes,
       this.data.listDesBus,
       this.data.listDesChauffeurs,
+      this.data.anneeScolaire,
       this.data.etat = 'activer',
+      
     )
     console.log(this.affectationBusLigne);
     this.affectationLigneBusService.createAffectations(this.affectationBusLigne).subscribe(data =>{
@@ -182,4 +207,48 @@ export class DialogAffectationBusLigneComponent implements OnInit {
     // Close the dialog without any action
     this.dialogRef.close();
   }
+}
+
+
+@Component({
+  selector: 'edit-dialog-affectation-bus-ligne',
+  templateUrl: 'edit-dialog-affectation-bus-ligne.html',
+})
+export class EditDialogAffectationLigneBus {
+
+  newLigne:any;
+  constructor(
+    public dialogRef: MatDialogRef<EditDialogAffectationLigneBus>,
+    @Inject(MAT_DIALOG_DATA) public data: AffectationLigneBus,
+    private AffectationLigneBusService: AffectationLigneBusService
+    ) {}
+
+    submitEdit() {
+      const id = this.data.id;
+      const AffectationLigneBus: AffectationLigneBus = {
+        id: this.data.id,
+        listDesLignes: this.data.listDesLignes,
+        listDesBus: this.data.listDesBus,
+        etat: this.data.etat,
+        listDesChauffeurs: this.data.listDesChauffeurs
+      };
+  
+      this.AffectationLigneBusService.updateAffectationLigneBus(id, AffectationLigneBus).subscribe((res: any) => {
+        this.dialogRef.close();
+      });
+    }
+    addLigne() {
+      if (this.newLigne) {
+        this.data.listDesLignes.push(this.newLigne);
+        this.newLigne = ''; // Reset the input field
+      }
+    }
+    removeLigne(index: number) {
+      this.data.listDesLignes.splice(index, 1);
+    }
+
+  onCancel(): void {
+    this.dialogRef.close();
+  }
+
 }
